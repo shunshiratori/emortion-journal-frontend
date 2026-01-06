@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Emotion Journal
 
-## Getting Started
+日々の気分を記録・管理するための感情ジャーナルアプリケーションです。
+🌐 **公開 URL**: [https://emortion-journal-frontend.vercel.app/](https://emortion-journal-frontend.vercel.app/)
 
-First, run the development server:
+## 機能
+
+- ユーザー認証（ログイン/ログアウト）
+- 気分レベル（1〜10）の記録
+- メモの追加（任意）
+- エントリの一覧表示
+- エントリの削除
+
+## 技術スタック
+
+- **フロントエンド**: Next.js 16.0.1 (App Router)
+- **UI**: React 19.2.0
+- **スタイリング**: Tailwind CSS 4
+- **言語**: TypeScript 5
+- **HTTP クライアント**: Axios
+- **認証**: JWT Bearer Token
+
+## 必要要件
+
+- Node.js 20 以上
+- npm または yarn
+- バックエンド API（デフォルト: `http://localhost:8080`）
+
+## セットアップ
+
+1. リポジトリのクローン
+
+```bash
+git clone <repository-url>
+cd emotion-journal-next
+```
+
+2. 依存パッケージのインストール
+
+```bash
+npm install
+```
+
+3. 環境変数の設定（任意）
+
+`.env.local` ファイルを作成し、API のベース URL を設定できます：
+
+```
+NEXT_PUBLIC_API_BASE=http://localhost:8080
+```
+
+## 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてアプリケーションを確認できます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ビルド
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## プロジェクト構造
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/              # Next.js App Router
+│   ├── page.tsx      # メインページ（エントリ一覧・作成）
+│   ├── login/        # ログインページ
+│   ├── layout.tsx    # ルートレイアウト
+│   └── globals.css   # グローバルスタイル
+├── context/          # React Context
+│   └── AuthContext.tsx  # 認証状態管理
+├── lib/              # ユーティリティ
+│   └── api.ts        # Axios設定とインターセプター
+└── types.ts          # TypeScript型定義
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API エンドポイント
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+アプリケーションは以下のエンドポイントを使用します：
 
-## Deploy on Vercel
+- `POST /api/login` - ログイン
+- `GET /api/entries` - エントリ一覧取得
+- `POST /api/entries` - 新規エントリ作成
+- `DELETE /api/entries/:id` - エントリ削除
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ライセンス
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private
